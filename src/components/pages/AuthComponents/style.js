@@ -8,6 +8,10 @@ export const Form = styled.form`
     align-items: center;
 
     gap:0.7rem;
+
+    @media only screen and (max-width: 600px) {
+        width:85%;
+    }
 `;
 
 export const Input = styled.input`
@@ -34,7 +38,10 @@ export const Input = styled.input`
         font-size:18px;
         font-weight:400;
         font-style:normal
+    }
 
+    @media only screen and (max-width: 600px) {
+        width:100%;
     }
 `;
 
@@ -52,6 +59,10 @@ export const Button = styled.button`
     font-style:normal;
     text-align: center;
     color: #ffffff;
+
+    @media only screen and (max-width: 600px) {
+        width:80%;
+    }
 `;
 
 export const Container = styled.div`
@@ -65,6 +76,10 @@ export const Container = styled.div`
     gap:10px;
     
     background-color: #000000;
+
+    @media only screen and (max-width: 600px) {
+        width:100vw;
+    }
 `;
 
 export const Anchor = styled(Link)`

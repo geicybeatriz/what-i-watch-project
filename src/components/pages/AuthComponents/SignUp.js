@@ -1,14 +1,23 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import authServices from "../../../services/authServices";
 import { Button, Container, Form, Input, Anchor } from "./style";
 
 export default function SignUp(){
     const [userData, setUserData] = useState({name:"", email:"", password:"", confirm_password:""});
     const [disabled, setDisabled] = useState(false);
+    const navigate = useNavigate();
 
     function createNewUser(e){
         e.preventDefault();
         setDisabled(true);
         console.log(userData);
+        const promise = authServices.signUp(userData);
+        promise.then((res) => navigate("/"));
+        promise.catch(erro => {
+            console.log(erro)
+            setDisabled(false);
+        });
     }
 
     return (

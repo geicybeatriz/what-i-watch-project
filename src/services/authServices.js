@@ -2,15 +2,15 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 
-const BASE_URL = process.env.DATABASE_URL;
+const BASE_URL ="http://localhost:5000";
 
-async function signUp(userData){
-    const promise = await axios.post(`${BASE_URL}/sign-up`, userData);
+function signUp(userData){
+    const promise = axios.post(`${BASE_URL}/sign-up`, userData);
     return promise;
 }
 
-async function signIn(userData){
-    const promise = await axios.post(`${BASE_URL}/sign-in`, userData);
+function signIn(userData){
+    const promise = axios.post(`${BASE_URL}/sign-in`, userData);
     return promise;
 }
 

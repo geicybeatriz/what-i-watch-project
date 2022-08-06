@@ -34,4 +34,8 @@ const Poster = styled.div`
         height:100%;
         object-fit:cover;
     }
+
+    @media only screen and (max-width: 600px) {
+        display:none;
+    }
 `;
