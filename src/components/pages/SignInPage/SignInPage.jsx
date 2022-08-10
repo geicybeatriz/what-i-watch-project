@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import SignIn from "../AuthComponents/SignIn";
+import SignIn from "../../AuthComponents/SignIn";
 
-export default function Home(){
-    
+export default function SignInPage(){
     return (
         <>
             <ContainerHome>

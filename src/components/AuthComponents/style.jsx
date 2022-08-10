@@ -60,6 +60,10 @@ export const Button = styled.button`
     text-align: center;
     color: #ffffff;
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     @media only screen and (max-width: 600px) {
         width:80%;
     }

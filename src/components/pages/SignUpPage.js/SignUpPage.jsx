@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SignUp from "../AuthComponents/SignUp";
+import SignUp from "../../AuthComponents/SignUp";
 
 export default function SignUpPage(){
     
