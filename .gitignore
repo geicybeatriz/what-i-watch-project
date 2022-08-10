@@ -2,6 +2,7 @@
 
 #dados sensíveis
 /src/config
+.env
 
 # dependencies
 /node_modules
