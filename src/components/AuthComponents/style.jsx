@@ -2,8 +2,9 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 export const Form = styled.form`
+    width: 100%;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -15,8 +16,8 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-    width: 400px;
-    height: 60px;
+    width: 85%;
+    height: 55px;
 
     border-radius:50px;
     border:none;
@@ -46,8 +47,8 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    width: 300px;
-    height: 50px;
+    width: 70%;
+    height: 40px;
 
     border-radius:50px;
     border:none;

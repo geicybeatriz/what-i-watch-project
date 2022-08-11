@@ -1,8 +1,10 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import SignUpPage from "./pages/SignUpPage.js/SignUpPage";
-import Profile from "./pages/ProfilePage/Profile";
-import SignInPage from "./pages/SignInPage/SignInPage";
-import Homepage from "./pages/HomePage/HomePage";
+import SignUpPage from "./pages/SignUpPage";
+import Profile from "./pages/Profile";
+import SignInPage from "./pages/SignInPage";
+import Homepage from "./pages/HomePage";
+import MoviesPage from "./pages/MoviesPage";
+import SeriesPage from "./pages/SeriesPage";
 
 export default function App(){
     return (
@@ -12,6 +14,8 @@ export default function App(){
                 <Route path="/sign-up" element={<SignUpPage/>}></Route>
                 <Route path="/myaccount" element={<Profile />}></Route>
                 <Route path="/home" element={<Homepage />}></Route>
+                <Route path="/movies" element={<MoviesPage />}></Route>
+                <Route path="/series" element={<SeriesPage />}></Route>
             </Routes>
         </BrowserRouter>
     );
