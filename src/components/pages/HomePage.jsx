@@ -2,7 +2,7 @@ import Footer from "../Footer/Footer";
 import Banner from "../MoviesComponents/Banner";
 import ContainerMovies from "../MoviesComponents/ContainerMovies";
 import Header from "./../Header/Header";
-import {API_KEY} from "./../../config/config"
+import {API_KEY} from "./../../config/config";
 import { useEffect, useState } from "react";
 
 export default function Homepage(){
