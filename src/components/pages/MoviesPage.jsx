@@ -1,5 +1,10 @@
+import Header from "../Header/Header";
+
 export default function MoviesPage(){
     return (
-        <h1>essa é a pagina apenas com filmes</h1>
+        <>
+            <Header />
+            <h1>essa é a pagina apenas com filmes</h1>
+        </>
     )
 }

@@ -1,5 +1,11 @@
+import Header from "../Header/Header";
+
 export default function Profile(){
     return (
-        <h1>Sou o perfil do usuário!!!</h1>
+        <>
+            <Header/>
+            <h1>Sou o perfil do usuário!!!</h1>
+        </>
+        
     )
 }
