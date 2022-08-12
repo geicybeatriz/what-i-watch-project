@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 export default function SeriesPage(){
@@ -5,6 +6,7 @@ export default function SeriesPage(){
         <>
             <Header />
             <h1>essa é a pagina apenas com séries</h1>
+            <Footer />
         </>
     )
 }

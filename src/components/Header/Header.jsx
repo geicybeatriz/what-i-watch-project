@@ -34,12 +34,13 @@ const Container = styled.div`
     height:80px;
     padding: 0 30px;
 
-    background-color:#20201f;
+    background-color:#110000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
     display:flex;
     justify-content:space-between;
     align-items:center;
+    z-index:2;
 
     @media only screen and (max-width: 600px) {
         justify-content:center;
