@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import {FaUserCircle} from "react-icons/fa";
 import {BiLogOut} from "react-icons/bi";
+// import {alertInProgress} from "../../utils/Toastify";
 
 export default function MenuUser({openMenu}){
     return (
         <Icon openMenu={openMenu}>
-            <FaUserCircle color="#fff" size={28}/>
-            <BiLogOut color="#fff" size={28}/>
+            <FaUserCircle  color="#fff" size={28}/>
+            <BiLogOut  color="#fff" size={28}/>
         </Icon>
     );
 }

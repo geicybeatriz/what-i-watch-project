@@ -1,8 +1,8 @@
-import Footer from "../Footer/Footer";
-import Banner from "../MoviesComponents/Banner";
-import ContainerMovies from "../MoviesComponents/ContainerMovies";
-import Header from "./../Header/Header";
-import {API_KEY} from "./../../config/config";
+import Footer from "../components/Footer/Footer";
+import Banner from "../components/MoviesComponents/Banner";
+import ContainerMovies from "../components/MoviesComponents/ContainerMovies";
+import Header from "../components/Header/Header";
+import {API_KEY} from "../config/config";
 import { useEffect, useState } from "react";
 
 export default function Homepage(){
@@ -16,7 +16,6 @@ export default function Homepage(){
                 setMovies(data.results)
             })
     }, [])
-
 
     return (
         <>

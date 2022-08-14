@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import SignIn from "./../AuthComponents/SignIn";
+import SignUp from "./../components/AuthComponents/SignUp";
 
-export default function SignInPage(){
+export default function SignUpPage(){
     return (
         <>
             <ContainerHome>
                 <Poster />
-                <SignIn />                 
+                <SignUp />                                
             </ContainerHome>
         </>
     );
@@ -20,7 +20,6 @@ const ContainerHome = styled.main`
     justify-content: center;
 
     overflow-y:hidden;
-    
 `;
 
 const Poster = styled.div`
@@ -32,4 +31,3 @@ const Poster = styled.div`
         display:none;
     }
 `;
-

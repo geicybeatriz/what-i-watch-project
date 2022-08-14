@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import authServices from "./../../services/authServices";
 import { Button, Container, Form, Input, Anchor } from "./style";
 import {ThreeDots} from "react-loader-spinner";
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function SignIn(){
+    const {setToken} = useContext(UserContext);
     const [userData, setUserData] = useState({email:"", password:""});
     const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate();
@@ -18,6 +20,7 @@ export default function SignIn(){
         promise.then(res => {
             console.log(res.data);
             localStorage.setItem("token", res.data);
+            setToken(res.data);
             navigate("/home");
         });
         
