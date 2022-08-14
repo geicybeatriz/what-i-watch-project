@@ -3,12 +3,12 @@ import styled from "styled-components";
 export default function ContainerMovies({movies}){
     if(movies.length > 0){
         return (
-            <Container>
+            <Container >
                 {movies.map(movie => {
                     return (
                         <CardMovie id={movie.id} key={movie.id}>
                             <Image src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="foto do filme"/>
-                            <Title>{movie.title}</Title>
+                            <Title>{movie.title || movie.name}</Title>
                         </CardMovie>
                 )})}
             </Container>
@@ -26,7 +26,7 @@ const Container = styled.main`
     width:100%;
 
     display:flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content:space-around;
     align-items:center;
 
