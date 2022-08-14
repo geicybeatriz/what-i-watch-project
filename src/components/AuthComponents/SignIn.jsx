@@ -18,7 +18,6 @@ export default function SignIn(){
 
         const promise = authServices.signIn(userData);
         promise.then(res => {
-            console.log(res.data);
             localStorage.setItem("token", res.data);
             setToken(res.data);
             navigate("/home");

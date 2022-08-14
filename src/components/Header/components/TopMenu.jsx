@@ -1,15 +1,22 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export default function TopMenu({openMenu}){
+    const navigate = useNavigate();
+    function logOut(e){
+        e.preventDefault();
+        localStorage.removeItem("token");
+        navigate("/");
+    }
     return (
         <Container openMenu={openMenu}>
             <MenuButton to="/home">Início</MenuButton>
             <MenuButton to="/movies">Filmes</MenuButton>
             <MenuButton to="/series">Séries</MenuButton>
             {openMenu ? <MenuButton to="/myaccount">Minha conta</MenuButton> : <></>}
-            {openMenu ? <BiLogOut color="#fff" size={28}/>: <></>}
+            {openMenu ? <BiLogOut onClick={logOut} color="#fff" size={28}/>: <></>}
         </Container>
     );
 }
