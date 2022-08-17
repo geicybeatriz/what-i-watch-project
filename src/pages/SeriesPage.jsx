@@ -11,7 +11,7 @@ export default function SeriesPage(){
     const API_KEY = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
-        const promiseTheaters = axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
+        const promiseTheaters = axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=pt-BR&page=1`);
         promiseTheaters.then(res => {
                 setMovies(res.data.results)
             })
@@ -21,7 +21,7 @@ export default function SeriesPage(){
         <>
             <Header />
             <Container>
-                <Label message="Mais populares"/>
+                <Label message="Os mais bem avaliados"/>
                 <ContainerMovies movies={movies}/>
             </Container>
             <Footer />

@@ -14,7 +14,7 @@ export default function TopMenu({openMenu}){
         <Container openMenu={openMenu}>
             <MenuButton to="/home">Filmes Populares</MenuButton>
             <MenuButton to="/now-playing">Nos cinemas</MenuButton>
-            <MenuButton to="/series">Séries</MenuButton>
+            <MenuButton to="/top-rated">Bem avaliadas!</MenuButton>
             {openMenu ? <MenuButton to="/myaccount">Minha conta</MenuButton> : <></>}
             {openMenu ? <BiLogOut onClick={logOut} color="#fff" size={28}/>: <></>}
         </Container>
