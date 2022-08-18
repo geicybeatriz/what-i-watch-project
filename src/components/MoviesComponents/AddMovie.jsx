@@ -3,22 +3,21 @@ import styled from "styled-components"
 import { UserContext } from "../../contexts/UserContext";
 import {IoAddSharp} from "react-icons/io5";
 import {TailSpin} from "react-loader-spinner";
-import axios from "axios";
 import MyLists from "./MyLists";
 import Swal from "sweetalert2";
+import moviesServices from "../../services/movieServices";
 
 export default function AddMovie({title, id, image}){
     const [nameList, setNameList] = useState({name:""});
     const [myLists, setMyLists] = useState([]);
     const [open, setOpen] = useState(false);
     const [disabled, setDisabled] = useState(false);
+    
     const {token} = useContext(UserContext);
-
     const config = {headers: {Authorization: `Bearer ${token}` }};
-    const URL = `${process.env.REACT_APP_API_BASE_URL}/mylist`;
-
+    
     function getLists(){
-        const promise = axios.get(URL, config);
+        const promise = moviesServices.getLists(config);
         promise.then(res => {
             setMyLists(res.data);
             setOpen(!open);
@@ -30,7 +29,7 @@ export default function AddMovie({title, id, image}){
         e.preventDefault();
         setDisabled(true);
 
-        const promise = axios.post(URL,nameList, config);
+        const promise = moviesServices.createList(nameList, config);
         promise.then(res => {
             Swal.fire({text:'Lista criada com sucesso!', icon:'success'});
             setDisabled(false)
@@ -50,9 +49,6 @@ export default function AddMovie({title, id, image}){
 
     return (
         <Container>
-            <DivButton>
-                <Button onClick={addMovie}>+</Button>
-            </DivButton>
             <DivForm open={open} >
                 <Form onSubmit={createList}>
                     <Input placeholder="ex: lista 1"
@@ -70,26 +66,29 @@ export default function AddMovie({title, id, image}){
                 </Form>
                 <MyLists setOpen={setOpen} title={title} id={id} image={image} lists={myLists}/>
             </DivForm>
+            <DivButton>
+                <Button onClick={addMovie}>
+                    <IoAddSharp color="#ffffff" size={28}/>
+                </Button>
+            </DivButton>
         </Container>
     )
 }
 
 const Container = styled.div`
-    width:100%;
-
     display:flex;
-    flex-direction:column;
     justify-content:center;
-    align-items:flex-end;
+    align-items:center;
     gap:20px;
 
+    position:relative;
 `;
 
 const DivButton = styled.div`
-    width: 100%;
-
     display:flex;
     justify-content:right;
+    align-items:center;
+    
 `;
 
 const Button = styled.button`
@@ -107,6 +106,7 @@ const Button = styled.button`
     justify-content:center;
     align-items:center;
 
+    cursor: pointer;
 `;
 
 const DivForm = styled.div`
@@ -119,7 +119,12 @@ const DivForm = styled.div`
     align-items:center;
     gap:5px;
 
-    background-color:#0c0808e2;
+    background-color:#0c0808cc;
+    
+    position:absolute;
+    right:40px;
+    top:0px;
+
 `;
 
 const Form = styled.form`
@@ -150,6 +155,8 @@ const ButtonAdd = styled.button`
     display:flex;
     justify-content:center;
     align-items:center;
+
+    cursor:pointer;
 `;
 
 

@@ -1,9 +1,9 @@
-import axios from "axios";
-import {GiPerspectiveDiceSixFacesRandom} from "react-icons/gi";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { UserContext } from "../../contexts/UserContext";
+import moviesServices from "../../services/movieServices";
+import SortMovieIcon from "../RandomComponents/SortMovie";
 import IconToggle from "./IconToggle";
 import Movies from "./Movie";
 
@@ -19,7 +19,7 @@ export default function ListMovie({data}){
     }, []);
 
     function getMoviesByListId(){
-        const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/movies/${data.id}`, config);
+        const promise = moviesServices.getMoviesByListId(data.id, config)
         promise.then(res => {
             setMovies(res.data);
         });
@@ -34,7 +34,7 @@ export default function ListMovie({data}){
             <Title data={data}>
                 <Text>{data.name}</Text>
                 <Div>
-                    <GiPerspectiveDiceSixFacesRandom />
+                    <SortMovieIcon listId={data.id}/>
                     <IconToggle setOpenList={setOpenList} openList={openList} setMovies={setMovies}/>
                 </Div>
             </Title>
@@ -45,10 +45,9 @@ export default function ListMovie({data}){
 
 const Container = styled.main`
     width:80%;
-
+        
     display: flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
 `;
 

@@ -1,17 +1,18 @@
-import axios from "axios";
 import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { UserContext } from "../../contexts/UserContext";
+import moviesServices from "../../services/movieServices";
 
 export default function EachMovie({data, listId, getMoviesByListId}){
     const {token} = useContext(UserContext);
     const config = {headers: {Authorization: `Bearer ${token}`}};
 
     function deleteMovie(id){
-        const promise = axios.delete(`${process.env.REACT_APP_API_BASE_URL}/${listId}/${id}`, config);
+        const promise = moviesServices.deleteMovieById(listId, id, config);
         promise.then(res => {
+            Swal.fire({text:'Filme removido da lista com sucesso!', icon:'success'});
             getMoviesByListId();
         });
         promise.catch(err => {

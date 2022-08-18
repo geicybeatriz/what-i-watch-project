@@ -31,10 +31,10 @@ const Container = styled.div`
     left:0;
     right:0;
 
-    height:80px;
+    height:100px;
     padding: 0 30px;
 
-    background-color:#110000;
+    background-color:#110000f4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
     display:flex;
@@ -60,7 +60,7 @@ const DivMenu = styled.div`
         background-color:#ffffff;
     }
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 700px) {
         display:none;
     }
 `;
@@ -76,8 +76,9 @@ const MenuMobile = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    cursor:pointer;
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 700px) {
         display:none;
     }
 `;

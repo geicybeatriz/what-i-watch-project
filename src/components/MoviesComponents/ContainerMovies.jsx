@@ -34,6 +34,8 @@ const Container = styled.main`
     padding:30px;
     column-gap:20px;
     row-gap:20px;
+
+    
 `;
 
 const CardMovie = styled.article`
@@ -49,6 +51,7 @@ const CardMovie = styled.article`
     :hover{
         transform:scale(1.1);
     }
+    cursor: pointer;
 `;
 
 const Image = styled.img`

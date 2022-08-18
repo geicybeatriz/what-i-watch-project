@@ -20,10 +20,8 @@ const Container = styled.section`
     align-items:center;
     gap:20px;
 
-    margin-top:100px;
     padding: 0 30px;
-
-    background-color:#20201f;
+    background-color:#110000f4;
     box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.15);
 
     img{

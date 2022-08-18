@@ -1,25 +1,23 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import AddMovie from "../components/MoviesComponents/AddMovie";
+import tmdbServices from "../services/tmdbServices";
 
 export default function MoviePage(){
     const {id} = useParams();
     const [movieData, setMovieData] = useState({});
     const [genres, setGenres] = useState([]);
-    const API_KEY = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
-        const promise = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=pt-BR`);
+        const promise = tmdbServices.getInfoMovie(id);
         promise.then(res => {
-            console.log(res.data)
             setMovieData(res.data);
             setGenres([...res.data.genres])
         });
-    }, [API_KEY, id]);
+    }, [id]);
 
     return (
         <>
@@ -28,8 +26,11 @@ export default function MoviePage(){
                 <Image src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`} alt={movieData.title}/>
                 <BoxRight>
                     <Top>
-                        <Title>{movieData.title}</Title>
-                        <Text italic={true}>{movieData.tagline}</Text>
+                        <Div>
+                            <Title>{movieData.title}</Title>
+                            <Text italic={true}>{movieData.tagline}</Text>
+                        </Div>
+                        <AddMovie title={movieData.title} id={id} image={movieData.poster_path}/>
                     </Top>
                     <Description>
                         <Text italic={false}>Gêneros: {genres.length > 0 ? genres.map(item =>{
@@ -41,9 +42,8 @@ export default function MoviePage(){
                             }) : <></>}
                         </Text>
                         <Text italic={false}>Sinopse: {movieData.overview}.</Text>
-                    </Description>  
-                    <AddMovie title={movieData.title} id={id} image={movieData.poster_path}/>                 
-                </BoxRight>
+                    </Description>                
+                </BoxRight>  
             </Container>
             <Footer />
         </>
@@ -52,6 +52,7 @@ export default function MoviePage(){
 
 const Container = styled.main`
     width:100%;
+    min-height:calc(100vh - 100px);
 
     display:flex;
     justify-content:center;
@@ -60,6 +61,7 @@ const Container = styled.main`
 
     margin-top: 80px;
     padding:50px 150px;
+    
 
     @media only screen and (max-width: 600px){
         padding:30px;
@@ -76,8 +78,7 @@ const Image = styled.img`
     width:250px;
     height:350px;
     object-fit:contain;
-    border-radius:5px;
-
+    
     @media only screen and (max-width: 600px){
         width:80%;
     }
@@ -85,7 +86,6 @@ const Image = styled.img`
 
 const BoxRight = styled.section`
     width:100%;
-    height:350px;
 
     display:flex;
     flex-direction:column;
@@ -99,10 +99,17 @@ const Top = styled.article`
     width:100%;
 
     display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+`;
+
+const Div = styled.div`
+    display:flex;
     flex-direction:column;
     align-items:flex-start;
     gap:15px;
-
+    
 `;
 
 const Description = styled.section`

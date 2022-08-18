@@ -4,18 +4,17 @@ import styled from "styled-components";
 import Label from "../components/MoviesComponents/Label";
 import ContainerMovies from "../components/MoviesComponents/ContainerMovies";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import tmdbServices from "../services/tmdbServices";
 
 export default function SeriesPage(){
     const [movies, setMovies] = useState([]);
-    const API_KEY = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
-        const promiseTheaters = axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=pt-BR&page=1`);
-        promiseTheaters.then(res => {
+        const promise = tmdbServices.getTopRatedMovies();
+        promise.then(res => {
                 setMovies(res.data.results)
             })
-    }, [API_KEY])
+    }, [])
 
     return (
         <>
@@ -37,6 +36,6 @@ const Container = styled.section`
     justify-content:center;
     align-items:flex-start;
 
-    margin-top:80px;
+    margin:80px 0;
 
 `;

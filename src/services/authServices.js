@@ -1,14 +1,14 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const URL = process.env.REACT_APP_API_DEPLOY;
 
 async function signUp(userData){
-    const promise = await axios.post(`${BASE_URL}/sign-up`, userData);
+    const promise = await axios.post(`${URL}/sign-up`, userData);
     return promise;
 }
 
 function signIn(userData){
-    const promise = axios.post(`${BASE_URL}/sign-in`, userData);
+    const promise = axios.post(`${URL}/sign-in`, userData);
     return promise;
 }
 

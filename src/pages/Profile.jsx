@@ -1,11 +1,11 @@
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import axios from "axios";
 import styled from "styled-components";
 import Label from "../components/MoviesComponents/Label";
 import { useContext, useEffect, useState } from "react";
 import MoviesLists from "../components/MoviesComponents/MoviesLists";
 import { UserContext } from "../contexts/UserContext";
+import moviesServices from "../services/movieServices";
 
 
 export default function Profile(){
@@ -15,7 +15,7 @@ export default function Profile(){
     const config = {headers: {Authorization: `Bearer ${token}` }};
 
     useEffect(() => {
-        const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/mylist`, config)
+        const promise = moviesServices.getLists(config);
             promise.then(res => {
                 console.log(res.data); 
                 setMyLists(res.data)
@@ -37,12 +37,11 @@ export default function Profile(){
 }
 
 const Container = styled.section`
-    width:100%;
-    
+    width:100%; 
+    min-height:calc(100vh - 100px);
+
     display: flex;
     flex-direction:column;
-    justify-content:center;
     align-items:flex-start;
-
-    margin-top:80px;
+    margin-top:80px;    
 `;

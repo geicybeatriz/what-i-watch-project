@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import { UserContext } from "../../contexts/UserContext";
 import Swal from "sweetalert2";
+import moviesServices from "../../services/movieServices";
 
 export default function MyLists({lists, title, id, image, setOpen}){
     const movieData = {title:title, image:image, tmdbId:id};
@@ -10,8 +10,9 @@ export default function MyLists({lists, title, id, image, setOpen}){
     const config = {headers: {Authorization: `Bearer ${token}` }};
 
     function addMovie(id){
-        const promise = axios.post(`${process.env.REACT_APP_API_BASE_URL}/movies/${id}`, movieData, config);
+        const promise = moviesServices.addMovie(id, movieData, config);
         promise.then(res => {
+            Swal.fire({text:'Filme adicionado com sucesso!', icon:'success'});
             setOpen(false);
         });
 
@@ -61,4 +62,6 @@ const List = styled.div`
     font-style:normal;
     color:#fff;
     text-align:center;
+
+    cursor: pointer;
 `;

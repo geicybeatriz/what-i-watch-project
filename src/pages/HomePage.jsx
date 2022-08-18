@@ -3,18 +3,17 @@ import Banner from "../components/MoviesComponents/Banner";
 import ContainerMovies from "../components/MoviesComponents/ContainerMovies";
 import Header from "../components/Header/Header";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import tmdbServices from "../services/tmdbServices";
 
 export default function Homepage(){
     const [movies, setMovies] = useState([]);
-    const API_KEY = process.env.REACT_APP_API_KEY;
 
     useEffect(() => {
-        const promise = axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`);
+        const promise = tmdbServices.getPopularMovies()
         promise.then(res => {
                 setMovies(res.data.results)
-            })
-    }, [API_KEY])
+        });
+    }, [])
 
     return (
         <>
