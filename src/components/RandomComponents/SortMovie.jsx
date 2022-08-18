@@ -38,7 +38,7 @@ export default function SortMovieIcon({listId}){
 
     return (
         <>
-            <GiPerspectiveDiceSixFacesRandom  cursor=""color="#ffffff" size={20} onClick={() => getMovies(listId)}/>
+            <GiPerspectiveDiceSixFacesRandom  color="#ffffff" size={20} onClick={() => getMovies(listId)}/>
         </>
     )
 }
